@@ -9,6 +9,9 @@ MAINTAINER devops@canary.is
 
 RUN apt-get update \
   && apt-get --yes --no-install-recommends install \
+    gcc \
+    g++ \
+    libc6-dev \
     python2.7 \
     python2.7-dev \
     python-pip \
