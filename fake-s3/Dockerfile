@@ -9,11 +9,18 @@ RUN mkdir -p "$FAKE_S3_ROOT" && chown daemon:daemon "$FAKE_S3_ROOT"
 
 WORKDIR $FAKE_S3_ROOT
 
-RUN apt-get update && \
-  apt-get -y install ruby rubygems-integration && \
-  rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+  && apt-get -y install ruby rubygems-integration git \
+  && rm -rf /var/lib/apt/lists/*
 
-RUN gem install fakes3 -v 0.1.6.1
+ENV FAKES3_VERSION 0.1.6.1
+ENV FAKES3_BRANCH missing-content-type
+ENV FAKES3_REPO https://github.com/bison/fake-s3.git
+
+RUN git clone --branch $FAKES3_BRANCH $FAKES3_REPO /tmp/fake-s3 \
+  && cd /tmp/fake-s3 \
+  && gem build fakes3.gemspec \
+  && gem install ./fakes3-$FAKES3_VERSION.gem
 
 EXPOSE 8080
 
