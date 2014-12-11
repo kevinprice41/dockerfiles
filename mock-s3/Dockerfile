@@ -16,10 +16,10 @@ RUN git clone $MOCK_S3_REPO /tmp/mock-s3 \
   && cd /tmp/mock-s3 \
   && python setup.py install
 
-EXPOSE 8080
+ENV MOCK_S3_PORT 8080
 
 VOLUME [$MOCK_S3_ROOT]
 
 USER daemon
 
-CMD exec mock_s3 --host 0.0.0.0 --port 8080 --root $MOCK_S3_ROOT
+CMD exec mock_s3 --host 0.0.0.0 --port $MOCK_S3_PORT --root $MOCK_S3_ROOT
