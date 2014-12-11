@@ -22,10 +22,10 @@ RUN git clone --branch $FAKES3_BRANCH $FAKES3_REPO /tmp/fake-s3 \
   && gem build fakes3.gemspec \
   && gem install ./fakes3-$FAKES3_VERSION.gem
 
-EXPOSE 8080
+ENV FAKE_S3_PORT 8080
 
 VOLUME [$FAKE_S3_ROOT]
 
 USER daemon
 
-CMD exec fakes3 server --port=8080 --root="$FAKE_S3_ROOT"
+CMD exec fakes3 server --port="$FAKE_S3_PORT" --root="$FAKE_S3_ROOT"
