@@ -24,7 +24,7 @@ RUN git clone --branch $FAKES3_BRANCH $FAKES3_REPO /tmp/fake-s3 \
 
 ENV FAKE_S3_PORT 8080
 
-VOLUME [$FAKE_S3_ROOT]
+VOLUME ["/srv/fake-s3"]
 
 USER daemon
 

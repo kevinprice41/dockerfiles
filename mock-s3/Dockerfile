@@ -18,7 +18,7 @@ RUN git clone $MOCK_S3_REPO /tmp/mock-s3 \
 
 ENV MOCK_S3_PORT 8080
 
-VOLUME [$MOCK_S3_ROOT]
+VOLUME ["/srv/mock-s3"]
 
 USER daemon
 
