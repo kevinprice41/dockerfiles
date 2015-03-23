@@ -4,13 +4,18 @@ MAINTAINER devops@canary.is
 
 RUN apt-get update \
   && apt-get --yes --no-install-recommends install \
-    rubygems git-core openssh-client build-essential \
+    rubygems git-core git make time curl openssh-client build-essential \
+    mysql-client \
     libmysqlclient-dev \
     libpq-dev \
     libev-dev \
     libssl-dev \
     libffi-dev \
-    libevent-dev
+    mercurial \
+    libxml2-dev \
+    libxslt1-dev \
+    zip \
+    libevent-dev \
   && rm -rf /var/lib/apt/lists/*
 
 RUN \
