@@ -12,6 +12,8 @@ RUN apt-get update \
     libssl-dev \
     libffi-dev \
     mercurial \
+    libgraphicsmagick++1-dev \
+    libboost-python-dev \
     libxml2-dev \
     libxslt1-dev \
     zip \
