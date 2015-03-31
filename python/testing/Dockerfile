@@ -8,7 +8,10 @@ RUN apt-get update \
     mysql-client \
     libmysqlclient-dev \
     libpq-dev \
+    unzip \
     libev-dev \
+    libldap2-dev \
+    libsasl2-dev \
     libssl-dev \
     libffi-dev \
     mercurial \

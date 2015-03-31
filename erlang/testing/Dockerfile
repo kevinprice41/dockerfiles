@@ -7,6 +7,9 @@ RUN apt-get update \
     build-essential \
     time \
     git \
+    unzip \
+    libldap2-dev \
+    libsasl2-dev \
     openssh-client \
     mercurial \
     erlang-dev \
