@@ -47,8 +47,8 @@ RUN \
 
 RUN gem install fakes3
 
-RUN pip install -U flake8 pip awscli
-
 RUN pip install virtualenv \
   && mkdir -p "${VIRTUAL_ENV}" \
   && virtualenv "${VIRTUAL_ENV}"
+
+RUN pip install -U flake8 pip awscli mysql-python boto agile
