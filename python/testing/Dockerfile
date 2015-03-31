@@ -1,10 +1,27 @@
-FROM cnry/python:2.7
+FROM debian:jessie
+
+ENV DEBIAN_FRONTEND  noninteractive
+ENV PYTHONUNBUFFERED true
+ENV VIRTUAL_ENV      /usr/local/virtualenv
+ENV PATH             $VIRTUAL_ENV/bin:$PATH
 
 MAINTAINER devops@canary.is
 
 RUN apt-get update \
   && apt-get --yes --no-install-recommends install \
-    rubygems git-core git make time curl openssh-client build-essential \
+    rubygems \
+    git \
+    make \
+    time \
+    curl \
+    openssh-client \
+    build-essential \
+    gcc \
+    g++ \
+    libc6-dev \
+    python2.7 \
+    python2.7-dev \
+    python-pip \
     mysql-client \
     libmysqlclient-dev \
     libpq-dev \
@@ -21,6 +38,7 @@ RUN apt-get update \
     libxslt1-dev \
     zip \
     libevent-dev \
+    libev-dev \
   && rm -rf /var/lib/apt/lists/*
 
 RUN \
@@ -30,3 +48,7 @@ RUN \
 RUN gem install fakes3
 
 RUN pip install -U flake8 pip awscli
+
+RUN pip install virtualenv \
+  && mkdir -p "${VIRTUAL_ENV}" \
+  && virtualenv "${VIRTUAL_ENV}"
